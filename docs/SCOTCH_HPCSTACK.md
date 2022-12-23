@@ -2,8 +2,7 @@
 
 ## Hera
 ```
-https://gitlab.inria.fr/scotch/scotch.git  # scotch repository
-# transfer scotch repo to hera
+https://gitlab.inria.fr/scotch/scotch.git
 
 cd scotch
 
