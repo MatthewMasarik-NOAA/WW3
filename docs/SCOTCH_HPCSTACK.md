@@ -12,7 +12,7 @@ cd scotch
 module purge
 module load cmake/3.20.1
 module load intel/2022.1.2
-module load impi/2022.12
+module load impi/2022.1.2
 module use  /scratch1/NCEPDEV/nems/role.epic/hpc-stack/libs/intel-2022.1.2/modulefiles/stack
 module load hpc/1.2.0
 module load hpc-intel/2022.1.2
