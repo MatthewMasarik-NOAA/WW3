@@ -2,7 +2,7 @@
 
 ## Hera
 ```
-https://gitlab.inria.fr/scotch/scotch.git
+# https://gitlab.inria.fr/scotch/scotch.git
 
 cd scotch
 
