@@ -17,8 +17,9 @@ module use  /scratch1/NCEPDEV/nems/role.epic/hpc-stack/libs/intel-2022.1.2/modul
 module load hpc/1.2.0
 module load hpc-intel/2022.1.2
 module load hpc-impi/2022.1.2
+module load hdf5/1.10.6
 module load netcdf/4.7.4
-module load gnu
+module load gnu/9.2.0
 
 mkdir build && cd build
 cmake -DCMAKE_Fortran_COMPILER=ifort            \
