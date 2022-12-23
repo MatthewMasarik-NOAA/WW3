@@ -2,10 +2,8 @@
 
 ## Hera
 ```
-# download outside hera
-git clone https://gitlab.inria.fr/scotch/scotch.git
-
-# transfer scotch to hera
+https://gitlab.inria.fr/scotch/scotch.git  # scotch repository
+# transfer scotch repo to hera
 
 cd scotch
 
