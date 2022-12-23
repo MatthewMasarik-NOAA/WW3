@@ -1,7 +1,7 @@
 # SCOTCH Install using hpc-stack
 
 ## Hera
-```bash
+```
 # download outside hera
 git clone https://gitlab.inria.fr/scotch/scotch.git
 
