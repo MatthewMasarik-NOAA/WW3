@@ -4,6 +4,7 @@
 ```
 git clone https://gitlab.inria.fr/scotch/scotch.git
 cd scotch
+git checkout v7.0.3
 mkdir build && cd build
 
 
