@@ -1,11 +1,8 @@
-# Parmetis/Metis Install using hpc-stack
+#!/bin/bash
 
-## Hera
-```bash
 PARMETIS_INSTALL=/scratch1/NCEPDEV/climate/Matthew.Masarik/waves/opt/hpc-stack/parmetis-4.0.3/install
 
 # https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/parmetis/4.0.3-4/parmetis_4.0.3.orig.tar.gz
-
 
 tar xvfz parmetis_4.0.3.orig.tar.gz
 cd parmetis-4.0.3
@@ -40,5 +37,4 @@ make install
 
 
 # Use: ParMetis
-export METIS_PATH=$PARMETIS_INSTALL
-```
+##export METIS_PATH=$PARMETIS_INSTALL
