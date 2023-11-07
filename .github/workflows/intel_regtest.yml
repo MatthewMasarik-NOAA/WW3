@@ -8,7 +8,7 @@ concurrency:
 
 # Set I_MPI_CC/F90 so Intel MPI wrapper uses icc/ifort instead of gcc/gfortran
 env:
-  cache_key: intel10
+  cache_key: intel11
   CC: icc
   FC: ifort
   CXX: icpc
@@ -22,9 +22,7 @@ env:
 jobs:
   setup:
     runs-on: ubuntu-20.04
-
     steps:
-
       - name: checkout-ww3
         if: steps.cache-env.outputs.cache-hit != 'true'
         uses: actions/checkout@v3
@@ -100,7 +98,7 @@ jobs:
           source spack/share/spack/setup-env.sh
           spack env activate ww3-intel
           cd ww3/regtests
-          export CC=mpiicc
-          export FC=mpiifort
+          export CC=icc
+          export FC=ifort
           export path_build_root=$(pwd)/build
           ./bin/run_cmake_test -b slurm -o all -S -T -s PR1 -w work_PR1 ../model ww3_tp2.2
