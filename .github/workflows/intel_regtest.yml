@@ -1,4 +1,4 @@
-name: Intel Linux Build
+name: Intel Linux Regtest - ww3_tp2.2/PR1
 on: [push, pull_request, workflow_dispatch]
 
 # Cancel in-progress workflows when pushing to a branch
