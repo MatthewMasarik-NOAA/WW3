@@ -1148,7 +1148,7 @@ CONTAINS
     integer :: v_taido, v_dairo, v_zet_seto, v_aso, v_cao, v_cdo, v_iceo
     integer :: v_iceho, v_icefo, v_grdid, v_spco
 
-    print *,filename
+    !!!MTM print *,filename
     IOTST = 0
 
     ! Open the netCDF file.
@@ -1200,10 +1200,12 @@ CONTAINS
     if (ncerr .ne. 0) return
     ncerr = nf90_get_var(fh, v_ptloc, PTLOC)
     if (ncerr .ne. 0) return
-    ncerr = nf90_inq_varid(fh, VNAME_PTNME, v_ptnme)
-    if (ncerr .ne. 0) return
-    ncerr = nf90_get_var(fh, v_ptnme, PTNME)
-    if (ncerr .ne. 0) return
+
+    !!!MTM
+    ! ncerr = nf90_inq_varid(fh, VNAME_PTNME, v_ptnme)
+    ! if (ncerr .ne. 0) return
+    ! ncerr = nf90_get_var(fh, v_ptnme, PTNME)
+    ! if (ncerr .ne. 0) return
     ncerr = nf90_inq_varid(fh, VNAME_IW, v_iw)
     if (ncerr .ne. 0) return
     ncerr = nf90_get_var(fh, v_iw, IW)
