@@ -8,7 +8,7 @@
 !/ ------------------------------------------------------------------- /
 !>
 !> @brief Read/write restart files.
-!>
+!> @todo resolve pdlib restart reproducibility.
 !> @author H. L. Tolman  @date 22-Mar-2021
 !>
 MODULE W3IORSMD
