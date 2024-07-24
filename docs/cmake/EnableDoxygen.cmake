@@ -15,13 +15,13 @@ function(EnableDoxygen outdir)
         ${CMAKE_BINARY_DIR}/${outdir}/Doxyfile @ONLY)
     set(DOXYGEN_GENERATE_HTML YES)
     set(DOXYGEN_QUIET YES)
-###MTM    set(DOXYGEN_HTML_OUTPUT ${CMAKE_BINARY_DIR}/${outdir}/html)
     add_custom_target(enable_docs
         COMMAND
-        ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/${outdir}/Doxyfile
-###MTM        ALL
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/${outdir}
-        COMMENT "Generate Doxygen HTML documentation")
+          ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/${outdir}/Doxyfile
+        WORKING_DIRECTORY
+          ${CMAKE_BINARY_DIR}/${outdir}
+        COMMENT
+          "Generate Doxygen HTML documentation")
     message("-- Doxygen HTML index page: "
         ${CMAKE_BINARY_DIR}/${outdir}/html/index.html)
 endfunction()
