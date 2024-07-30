@@ -1,4 +1,4 @@
-# doxygen documentation- Matt Masarik 24-Jul-2024.
+# Doxygen documentation- Matt Masarik 24-Jul-2024.
 function(EnableDoxygen outdir)
   find_package(Doxygen)
     if (NOT DOXYGEN_FOUND)
