@@ -60,7 +60,7 @@ endif()
 
 add_subdirectory(model)
 
-# Turn on doxygen html documentation
+# Turn on doxygen documentation
 if (ENABLE_DOCS)
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/docs/cmake")
   include(EnableDoxygen)
