@@ -1,6 +1,6 @@
 # Doxygen documentation- Matt Masarik 24-Jul-2024.
 function(EnableDoxygen outdir)
-  find_package(Doxygen)
+  find_package(Doxygen REQUIRED)
     if (NOT DOXYGEN_FOUND)
       add_custom_target(enable_docs
           COMMAND false
