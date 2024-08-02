@@ -572,10 +572,10 @@ CONTAINS
          WDATAS(IMOD)%ICEH(0:NSEA),                           &
          WDATAS(IMOD)%ICEF(0:NSEA),                           &
          WDATAS(IMOD)%ICEDMAX(NSEA),                          &
-         WDATAS(IMOD)%UST(0:NSEATM),                          &
-         WDATAS(IMOD)%USTDIR(0:NSEATM),                       &
-         WDATAS(IMOD)%ASF(NSEATM),                            &
-         WDATAS(IMOD)%FPIS(NSEATM), STAT=ISTAT                )
+         WDATAS(IMOD)%UST(1:NSEA),                          &
+         WDATAS(IMOD)%USTDIR(1:NSEA),                       &
+         WDATAS(IMOD)%ASF(1:NSEA),                            &
+         WDATAS(IMOD)%FPIS(1:NSEA), STAT=ISTAT                )
     CHECK_ALLOC_STATUS ( ISTAT )
 
     WDATAS(IMOD)%WLV   (:) = 0.
@@ -588,8 +588,8 @@ CONTAINS
     WDATAS(IMOD)%ICEH  (0:NSEA) = GRIDS(IMOD)%IICEHINIT
     WDATAS(IMOD)%ICEF  (0:NSEA) = 1000.
     WDATAS(IMOD)%ICEDMAX(:) = 1000.
-    WDATAS(IMOD)%UST   (0:NSEATM) = 1.E-5
-    WDATAS(IMOD)%USTDIR(0:NSEATM) = 0.
+    WDATAS(IMOD)%UST   (:) = 1.E-5
+    WDATAS(IMOD)%USTDIR(:) = 0.
     WDATAS(IMOD)%ASF   (:) = 0.
     WDATAS(IMOD)%FPIS  (:) = 0.
     WDATAS(IMOD)%DINIT     = .TRUE.
