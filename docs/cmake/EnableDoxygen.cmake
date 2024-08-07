@@ -8,7 +8,7 @@ function(EnableDoxygen outdir)
       return()
     endif()
 
-    set(src_input "${CMAKE_SOURCE_DIR}/model/src")
+    set(src_input  "${CMAKE_SOURCE_DIR}")
     set(doc_output "${CMAKE_BINARY_DIR}/${outdir}")
     file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/${outdir}/html)
     CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/docs/Doxyfile.in
