@@ -339,8 +339,8 @@ CONTAINS
     !/ ------------------------------------------------------------------- /
     !/ Parameter list
     !/
-    INTEGER                       :: NDSR
-    !      INTEGER, INTENT(IN)           :: NDSR
+    !!!MTMINTEGER                       :: NDSR
+    INTEGER, INTENT(IN)           :: NDSR
     INTEGER, INTENT(IN), OPTIONAL :: IMOD
     REAL, INTENT(INOUT)           :: DUMFPI
     CHARACTER, INTENT(IN)         :: INXOUT*(*)
