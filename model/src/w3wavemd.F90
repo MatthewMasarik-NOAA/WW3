@@ -2445,31 +2445,33 @@ CONTAINS
           end IF
         end if
         if (do_startall) then
-          IF (.NOT. LPDLIB) THEN
-            IF (NRQGO.NE.0 ) THEN
-              CALL MPI_STARTALL ( NRQGO, IRQGO , IERR_MPI )
+          IF ( (FLOUTG) .OR. (FLOUTG2 .AND. SBSED) ) THEN
+            IF (.NOT. LPDLIB) THEN
+              IF (NRQGO.NE.0 ) THEN
+                CALL MPI_STARTALL ( NRQGO, IRQGO , IERR_MPI )
 
-              FLGMPI(0) = .TRUE.
-              NRQMAX    = MAX ( NRQMAX , NRQGO )
+                FLGMPI(0) = .TRUE.
+                NRQMAX    = MAX ( NRQMAX , NRQGO )
 #ifdef W3_MPIT
               WRITE (NDST,9043) '1a', NRQGO, NRQMAX, NAPFLD
 #endif
-            END IF
-            !
-            IF (NRQGO2.NE.0 ) THEN
-              CALL MPI_STARTALL ( NRQGO2, IRQGO2, IERR_MPI )
+              END IF
+              !
+              IF (NRQGO2.NE.0 ) THEN
+                CALL MPI_STARTALL ( NRQGO2, IRQGO2, IERR_MPI )
 
-              FLGMPI(1) = .TRUE.
-              NRQMAX    = MAX ( NRQMAX , NRQGO2 )
+                FLGMPI(1) = .TRUE.
+                NRQMAX    = MAX ( NRQMAX , NRQGO2 )
 #ifdef W3_MPIT
-              WRITE (NDST,9043) '1b', NRQGO2, NRQMAX, NAPFLD
+                WRITE (NDST,9043) '1b', NRQGO2, NRQMAX, NAPFLD
 #endif
-            END IF
-          ELSE
+              END IF
+            ELSE
 #ifdef W3_PDLIB
-            CALL DO_OUTPUT_EXCHANGES(IMOD)
+              CALL DO_OUTPUT_EXCHANGES(IMOD)
 #endif
-          END IF ! IF (.NOT. LPDLIB) THEN
+            END IF ! IF (.NOT. LPDLIB) THEN
+          END IF ! ((FLOUTG) .OR. (FLOUTG2 .AND. SBSED))
         END IF ! if (do_startall)
 #endif
         call print_memcheck(memunit, 'memcheck_____:'//' WW3_WAVE AFTER TIME LOOP 1')
@@ -2615,11 +2617,21 @@ CONTAINS
                     IF ( FLGMPI(1) ) CALL MPI_WAITALL( NRQGO2, IRQGO2, STATIO, IERR_MPI )
                     FLGMPI(1) = .FALSE.
 #endif
-                    if (w3_sbs_flag) then
-                      IF ( J .EQ. 1 ) THEN
-                        CALL W3IOGO( 'WRITE', NDS(7), ITEST, IMOD )
-                      ENDIF
 
+!!!MTM ???
+#ifdef W3_SBS
+                       IF ( J .EQ. 1 ) THEN
+#endif
+
+                    CALL W3IOGO( 'WRITE', NDS(7), ITEST, IMOD &
+#ifdef W3_ASCII
+                            ,NDS(14)                          &
+#endif
+                            )
+#ifdef W3_SBS
+                      ENDIF
+#endif
+!!!MTM ???
                       ! Generate output flag file for fields and SBS coupling.
                       CALL STME21 ( TIME, IDTIME )
                       FOUTNAME = 'Field_done.' // IDTIME(1:4) &
@@ -2636,7 +2648,11 @@ CONTAINS
               ELSE IF ( do_point_output ) THEN
                 IF ( IAPROC .EQ. NAPPNT ) THEN
                   CALL W3IOPE ( VA )
-                  CALL W3IOPO ( 'WRITE', NDS(8), ITEST, IMOD )
+                  CALL W3IOPO ( 'WRITE', NDS(8), ITEST, IMOD &
+#ifdef W3_ASCII
+                          ,NDS(15)                           &
+#endif
+                          )
                 END IF
 
               ELSE IF ( do_track_output ) THEN
