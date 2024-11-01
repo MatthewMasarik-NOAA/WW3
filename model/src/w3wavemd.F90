@@ -2445,12 +2445,13 @@ CONTAINS
           end IF
         end if
         if (do_startall) then
-          IF (.NOT. LPDLIB) THEN
-            IF (NRQGO.NE.0 ) THEN
-              CALL MPI_STARTALL ( NRQGO, IRQGO , IERR_MPI )
+          IF ( (FLOUTG) .OR. (FLOUTG2 .AND. SBSED) ) THEN
+            IF (.NOT. LPDLIB) THEN
+              IF (NRQGO.NE.0 ) THEN
+                CALL MPI_STARTALL ( NRQGO, IRQGO , IERR_MPI )
 
-              FLGMPI(0) = .TRUE.
-              NRQMAX    = MAX ( NRQMAX , NRQGO )
+                FLGMPI(0) = .TRUE.
+                NRQMAX    = MAX ( NRQMAX , NRQGO )
 #ifdef W3_MPIT
               WRITE (NDST,9043) '1a', NRQGO, NRQMAX, NAPFLD
 #endif
@@ -2608,7 +2609,8 @@ CONTAINS
 #endif
                     CALL W3IOGONCD ()
                   END IF
-                else
+               else
+
                   ! default (binary) output
                   IF ( IAPROC .EQ. NAPFLD ) THEN
 #ifdef W3_MPI
@@ -2617,7 +2619,11 @@ CONTAINS
 #endif
                     if (w3_sbs_flag) then
                       IF ( J .EQ. 1 ) THEN
-                        CALL W3IOGO( 'WRITE', NDS(7), ITEST, IMOD )
+                        CALL W3IOGO( 'WRITE', NDS(7), ITEST, IMOD &
+#ifdef W3_ASCII
+                            ,NDS(14)                              &
+#endif
+                            )
                       ENDIF
 
                       ! Generate output flag file for fields and SBS coupling.
@@ -2636,7 +2642,11 @@ CONTAINS
               ELSE IF ( do_point_output ) THEN
                 IF ( IAPROC .EQ. NAPPNT ) THEN
                   CALL W3IOPE ( VA )
-                  CALL W3IOPO ( 'WRITE', NDS(8), ITEST, IMOD )
+                  CALL W3IOPO ( 'WRITE', NDS(8), ITEST, IMOD &
+#ifdef W3_ASCII
+                          ,NDS(15)                           &
+#endif
+                          )
                 END IF
 
               ELSE IF ( do_track_output ) THEN
