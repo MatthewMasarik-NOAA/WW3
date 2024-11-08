@@ -12,7 +12,7 @@ grid points. Propagation of a wave spectrum can be solved using regular
 (rectilinear or curvilinear) and unstructured (triangular) grids. See
 [About WW3](https://github.com/NOAA-EMC/WW3/wiki/About-WW3) for a
 detailed description of WAVEWATCH III<sup>&reg;</sup>. For a web-based
-view of the WAVEWATCH III<sup>&reg;</sup> source code documentation
+view of the WAVEWATCH III<sup>&reg;</sup> source code
 refer to the [WW3 doxygen documentation](https://noaa-emc.github.io/WW3).
 
 ## Installation
