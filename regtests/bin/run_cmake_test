@@ -420,17 +420,20 @@ then
   cd $path_build
   if [[ "$outopt" = "all" ]] || [[ "$outopt" = "grib" ]] ;
   then
-    cat $file_c | sed 's/DIST/SHRD/' | sed 's/MPI //'   | \
+    # SCRIPMPI must proceed MPI in both blocks
+    cat $file_c | sed 's/SCRIPMPI //'| \
+                  sed 's/DIST/SHRD/' | sed 's/MPI //'   | \
                   sed 's/OMPG //'    | sed 's/NOGRB/NCEP2/' | \
                   sed 's/OMPH //'    | sed 's/PDLIB //' | \
                   sed 's/B4B //'     | sed 's/METIS //' | \
-                  sed 's/SCOTCH //'  | sed 's/SCRIPMPI //'  > $path_build/switch
+                  sed 's/SCOTCH //'  > $path_build/switch
   else
-    cat $file_c | sed 's/DIST/SHRD/' | sed 's/MPI //'   | \
+    cat $file_c | sed 's/SCRIPMPI //'| \
+                  sed 's/DIST/SHRD/' | sed 's/MPI //'   | \
                   sed 's/OMPG //'    | \
                   sed 's/OMPH //'    | sed 's/PDLIB //' | \
                   sed 's/B4B //'     | sed 's/METIS //' | \
-                  sed 's/SCOTCH //'  | sed 's/SCRIPMPI //'  > $path_build/switch
+                  sed 's/SCOTCH //'  > $path_build/switch
   fi
 
   echo "Switch file is $path_build/switch with switches:" >> $ofile
