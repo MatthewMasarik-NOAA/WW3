@@ -3503,6 +3503,7 @@
 
 !!!MTM
       IF ( WRITE .AND. (OFILES(1).EQ.1) ) THEN
+          ! The NDSOG file unit was closed above so can be reused for NDSOGLOG
           NDSOGLOG = NDSOG
           OPEN (NDSOGLOG,FILE=FNMPRE(:J)//TIMETAG//'.out_grd.'//FILEXT(:I)//'.FINISHED', &
                form ='FORMATTED',ERR=800,IOSTAT=IERR)
