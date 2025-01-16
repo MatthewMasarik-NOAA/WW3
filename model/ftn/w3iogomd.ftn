@@ -2514,10 +2514,7 @@
 !/ARC      REAL                    :: UDARC
       CHARACTER(LEN=30)       :: IDTST, TNAME
       CHARACTER(LEN=10)       :: VERTST
-
-!!!MTM
       INTEGER                 :: NDSOGLOG
-!!!MTM
 !/
 !/ ------------------------------------------------------------------- /
 !/
@@ -3500,10 +3497,8 @@
 !
       IF(OFILES(1) .EQ. 1) CLOSE(NDSOG)
 !
-
-!!!MTM
       IF ( WRITE .AND. (OFILES(1).EQ.1) ) THEN
-          ! The NDSOG file unit was closed above so can be reused for NDSOGLOG
+          ! The NDSOG file unit was closed above so can now be reused for NDSOGLOG
           NDSOGLOG = NDSOG
           OPEN (NDSOGLOG,FILE=FNMPRE(:J)//TIMETAG//'.out_grd.'//FILEXT(:I)//'.FINISHED', &
                form ='FORMATTED',ERR=800,IOSTAT=IERR)
@@ -3511,7 +3506,6 @@
           CALL FLUSH (NDSOGLOG)
           CLOSE (NDSOGLOG)
       ENDIF
-!!!MTM
 
 !/MPI      CALL W3SETA ( IGRD, NDSE, NDST )
 !
